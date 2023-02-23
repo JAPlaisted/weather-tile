@@ -1,0 +1,34 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/* Color Palette */
+:root {
+    --color-primary: #fcb13b;
+    --color-secondary: #bb4003 ;
+    --color-background-light: #f9f5dd;
+    --color-background-dark: #5b5557;
+    --color-body-light: #656565;
+    --color-body-dark: #efeeee;
+    --border-radius: 30px;
+  }
+
+  /* Typography */
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+  }
+  
+  body { 
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  p {
+    font-size: 1.2rem
+  }
