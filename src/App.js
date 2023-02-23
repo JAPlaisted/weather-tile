@@ -1,17 +1,23 @@
 import { Fragment } from "react";
+import LocationInformation from "./components/LocationInformation";
+import WeatherInformation from "./components/WeatherInformation";
+import FeelsLikeChart from "./components/FeelsLikeChart";
+import PrecipitationChart from "./components/PrecipitationChart";
+import VisibilityAndAirChart from "./components/VisibilityAndAirChart";
 import "./App.css";
 
 function App() {
   return (
-    <Fragment>
-      <div>
-        {/* Location Information */}
-        {/* Weather Information */}
+    <Fragment className="col">
+      Weather Tile
+      <div className="row">
+        <LocationInformation />
+        <WeatherInformation />
       </div>
-      <div>
-        {/* Feels like vs actual (line chart) */}
-        {/* Precipitation (bar chart) */}
-        {/* Visibility & air quality (scatter plot) */}
+      <div className="row">
+        <FeelsLikeChart />
+        <PrecipitationChart />
+        <VisibilityAndAirChart />
       </div>
     </Fragment>
   );
