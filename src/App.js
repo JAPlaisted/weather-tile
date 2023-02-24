@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import LocalInformation from "./components/LocationInformation";
+import WeatherInformation from "./components/WeatherInformation";
+import "./App.css";
 
 const Weather = () => {
   const [location, setLocation] = useState({
@@ -8,9 +11,10 @@ const Weather = () => {
     region: "",
     country: "",
     localtime: "",
-    lattitude: "",
+    latitude: "",
     longitude: "",
   });
+
   const [weather, setWeather] = useState({
     temp_c: undefined,
     temp_f: undefined,
@@ -29,6 +33,7 @@ const Weather = () => {
     wind_dir: "",
     wind_kph: undefined,
   });
+
   const [airQuality, setAirQuality] = useState({
     "gb-defra-index": undefined,
     "us-epa-index": undefined,
@@ -39,6 +44,7 @@ const Weather = () => {
     pm10: undefined,
     so2: undefined,
   });
+
   const [isCelsius, setIsCelsius] = useState(true);
 
   useEffect(() => {
@@ -77,14 +83,15 @@ const Weather = () => {
             wind_dir: data.current.wind_dir,
             wind_kph: data.current.wind_kph,
           });
-          setLocation({
+          setLocation((prevState) => ({
+            ...prevState,
             timezone: data.location.tz_id,
             region: data.location.region,
             country: data.location.country,
             localtime: data.location.localtime,
-            lattitude: data.location.lat,
-            longitude: data.location.lon,
-          });
+            latitude: data.location.lat,
+            longitude: data.location.long,
+          }));
           setAirQuality({
             "gb-defra-index": data.current.air_quality["gb-defra-index"],
             "us-epa-index": data.current.air_quality["us-epa-index"],
@@ -108,37 +115,39 @@ const Weather = () => {
     <div>
       {weather.temp_c && weather.temp_f && (
         <div>
-          <h1>
-            Current Weather in {location.region}, {location.country}
-          </h1>
-          <div>
-            <img src={weather.condition.icon} alt={weather.condition.text} />
+          <div class="row">
+            <LocalInformation
+              country={location.country}
+              timezone={location.timezone}
+              region={location.region}
+              localtime={location.localtime}
+              latitude={location.lat}
+              longitude={location.long}
+            />
+            <WeatherInformation
+              icon={weather.condition.icon}
+              condition={weather.condition.text}
+              isCelsius={isCelsius}
+              tempC={weather.temp_c}
+              tempF={weather.temp_f}
+              feelsLikeC={weather.feelslike_c}
+              feelsLikeF={weather.feelslike_f}
+              cloud={weather.cloud}
+              gust={weather.gust_kph}
+              humidity={weather.humidity}
+              precipitation={weather.precip_mm}
+              pressure={weather.pressure_mb}
+              uV={weather.uv}
+              visibility={weather.vis_km}
+              lastUpdated={weather.last_updated}
+              windDegree={weather.wind_degree}
+              windDirection={weather.wind_dir}
+              windSpeed={weather.wind_kph}
+            />
           </div>
-          <div>
-            <h2>{isCelsius ? weather.temp_c : weather.temp_f}&deg;</h2>
-            <button onClick={toggleTemperatureUnit}>
-              {isCelsius ? "Fahrenheit" : "Celsius"}
-            </button>
-          </div>
-          <div>
-            <p>
-              Feels like:{" "}
-              {isCelsius ? weather.feelslike_c : weather.feelslike_f}&deg;
-            </p>
-            <p>Condition: {weather.condition.text}</p>
-            <p>Cloud: {weather.cloud}%</p>
-            <p>Gust: {weather.gust_kph} km/h</p>
-            <p>Humidity: {weather.humidity}%</p>
-            <p>Precipitation: {weather.precip_mm} mm</p>
-            <p>Pressure: {weather.pressure_mb} mb</p>
-            <p>UV: {weather.uv}</p>
-            <p>Visibility: {weather.vis_km} km</p>
-            <p>Last updated: {weather.last_updated}</p>
-            <p>
-              Wind: {weather.wind_degree}&deg; {weather.wind_dir}{" "}
-              {weather.wind_kph} km/h
-            </p>
-          </div>
+          <button onClick={toggleTemperatureUnit}>
+            {isCelsius ? "Fahrenheit" : "Celsius"}
+          </button>
           <div>
             <h2>Air Quality</h2>
             <p>UK Air Quality Index: {airQuality["gb-defra-index"]}</p>
