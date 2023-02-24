@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LocalInformation from "./components/LocationInformation";
 import WeatherInformation from "./components/WeatherInformation";
+import FeelsLikeChart from "./components/FeelsLikeChart";
 import "./App.css";
 
 const Weather = () => {
@@ -115,7 +116,7 @@ const Weather = () => {
     <div>
       {weather.temp_c && weather.temp_f && (
         <div>
-          <div class="row">
+          <div className="row">
             <LocalInformation
               country={location.country}
               timezone={location.timezone}
@@ -148,16 +149,25 @@ const Weather = () => {
           <button onClick={toggleTemperatureUnit}>
             {isCelsius ? "Fahrenheit" : "Celsius"}
           </button>
-          <div>
-            <h2>Air Quality</h2>
-            <p>UK Air Quality Index: {airQuality["gb-defra-index"]}</p>
-            <p>US Air Quality Index: {airQuality["us-epa-index"]}</p>
-            <p>Carbon Monoxide: {airQuality.co} µg/m³</p>
-            <p>Nitrogen Dioxide: {airQuality.no2} µg/m³</p>
-            <p>Ozone: {airQuality.o3} µg/m³</p>
-            <p>Particulate Matter (2.5 µm): {airQuality.pm2_5} µg/m³</p>
-            <p>Particulate Matter (10 µm): {airQuality.pm10} µg/m³</p>
-            <p>Sulphur Dioxide: {airQuality.so2} µg/m³</p>
+          <FeelsLikeChart
+            isCelsius={isCelsius}
+            tempC={weather.temp_c}
+            tempF={weather.temp_f}
+            feelsLikeC={weather.feelslike_c}
+            feelsLikeF={weather.feelslike_f}
+          />
+          <div className="row">
+            <div>
+              <h2>Air Quality</h2>
+              <p>UK Air Quality Index: {airQuality["gb-defra-index"]}</p>
+              <p>US Air Quality Index: {airQuality["us-epa-index"]}</p>
+              <p>Carbon Monoxide: {airQuality.co} µg/m³</p>
+              <p>Nitrogen Dioxide: {airQuality.no2} µg/m³</p>
+              <p>Ozone: {airQuality.o3} µg/m³</p>
+              <p>Particulate Matter (2.5 µm): {airQuality.pm2_5} µg/m³</p>
+              <p>Particulate Matter (10 µm): {airQuality.pm10} µg/m³</p>
+              <p>Sulphur Dioxide: {airQuality.so2} µg/m³</p>
+            </div>
           </div>
         </div>
       )}
