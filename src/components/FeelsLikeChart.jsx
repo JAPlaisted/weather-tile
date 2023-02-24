@@ -14,7 +14,7 @@ const FeelsLikeChart = ({ isCelsius, tempC, tempF, feelsLikeC, feelsLikeF }) => 
 const colors = ["#fcb13b", "#bb4003"];
   
     return (
-      <div style={{ height: '400px', width: '600px' }}>
+      <div style={{ height: '300px', width: '450px' }}>
           <ResponsiveBar
             data={[{ 
                 type: "Temp", 
@@ -31,7 +31,7 @@ const colors = ["#fcb13b", "#bb4003"];
             ]}
             keys={["value"]}
             indexBy="label"
-            margin={{ top: 10, right: 30, bottom: 50, left: 60 }}
+            margin={{ top: 60, right: 30, bottom: 50, left: 60 }}
             padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import LocalInformation from "./components/LocationInformation";
 import WeatherInformation from "./components/WeatherInformation";
 import FeelsLikeChart from "./components/FeelsLikeChart";
+import PrecipitationChart from "./components/PrecipitationChart";
+import VisibilityAndAirChart from "./components/VisibilityAndAirChart";
 import "./App.css";
 
 const Weather = () => {
@@ -116,58 +118,62 @@ const Weather = () => {
     <div>
       {weather.temp_c && weather.temp_f && (
         <div>
-          <div className="row">
-            <LocalInformation
-              country={location.country}
-              timezone={location.timezone}
-              region={location.region}
-              localtime={location.localtime}
-              latitude={location.lat}
-              longitude={location.long}
-            />
-            <WeatherInformation
-              icon={weather.condition.icon}
-              condition={weather.condition.text}
+          <div className="section--dark">
+            <div className="row">
+              <LocalInformation
+                country={location.country}
+                timezone={location.timezone}
+                region={location.region}
+                localtime={location.localtime}
+                latitude={location.lat}
+                longitude={location.long}
+              />
+              <WeatherInformation
+                icon={weather.condition.icon}
+                condition={weather.condition.text}
+                isCelsius={isCelsius}
+                tempC={weather.temp_c}
+                tempF={weather.temp_f}
+                feelsLikeC={weather.feelslike_c}
+                feelsLikeF={weather.feelslike_f}
+                cloud={weather.cloud}
+                gust={weather.gust_kph}
+                humidity={weather.humidity}
+                precipitation={weather.precip_mm}
+                pressure={weather.pressure_mb}
+                uV={weather.uv}
+                visibility={weather.vis_km}
+                lastUpdated={weather.last_updated}
+                windDegree={weather.wind_degree}
+                windDirection={weather.wind_dir}
+                windSpeed={weather.wind_kph}
+              />
+            </div>
+            <button onClick={toggleTemperatureUnit}>
+              {isCelsius ? "Show Fahrenheit" : "Show Celsius"}
+            </button>
+          </div>
+          <div className="row section--light">
+            <FeelsLikeChart
               isCelsius={isCelsius}
               tempC={weather.temp_c}
               tempF={weather.temp_f}
               feelsLikeC={weather.feelslike_c}
               feelsLikeF={weather.feelslike_f}
-              cloud={weather.cloud}
-              gust={weather.gust_kph}
-              humidity={weather.humidity}
-              precipitation={weather.precip_mm}
-              pressure={weather.pressure_mb}
-              uV={weather.uv}
-              visibility={weather.vis_km}
-              lastUpdated={weather.last_updated}
-              windDegree={weather.wind_degree}
-              windDirection={weather.wind_dir}
-              windSpeed={weather.wind_kph}
             />
-          </div>
-          <button onClick={toggleTemperatureUnit}>
-            {isCelsius ? "Fahrenheit" : "Celsius"}
-          </button>
-          <FeelsLikeChart
-            isCelsius={isCelsius}
-            tempC={weather.temp_c}
-            tempF={weather.temp_f}
-            feelsLikeC={weather.feelslike_c}
-            feelsLikeF={weather.feelslike_f}
-          />
-          <div className="row">
-            <div>
-              <h2>Air Quality</h2>
-              <p>UK Air Quality Index: {airQuality["gb-defra-index"]}</p>
-              <p>US Air Quality Index: {airQuality["us-epa-index"]}</p>
-              <p>Carbon Monoxide: {airQuality.co} µg/m³</p>
-              <p>Nitrogen Dioxide: {airQuality.no2} µg/m³</p>
-              <p>Ozone: {airQuality.o3} µg/m³</p>
-              <p>Particulate Matter (2.5 µm): {airQuality.pm2_5} µg/m³</p>
-              <p>Particulate Matter (10 µm): {airQuality.pm10} µg/m³</p>
-              <p>Sulphur Dioxide: {airQuality.so2} µg/m³</p>
-            </div>
+            <div className="divider" />
+            <VisibilityAndAirChart
+              co={airQuality.co}
+              no2={airQuality.no2}
+              o3={airQuality.o3}
+              pm25={airQuality.pm2_5}
+              pm10={airQuality.pm10}
+              so2={airQuality.so2}
+              ukAir={airQuality["gb-defra-index"]}
+              usAir={airQuality["us-epa-index"]}
+            />
+            <div className="divider" />
+            <PrecipitationChart precipitation={3} isCelsius={isCelsius} />
           </div>
         </div>
       )}
