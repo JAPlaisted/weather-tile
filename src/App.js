@@ -121,7 +121,10 @@ const Weather = () => {
       {weather.temp_c && weather.temp_f && (
         <div>
           <div className="section--dark">
-            <div className="row">
+            <button className="btn" onClick={toggleTemperatureUnit}>
+              {isCelsius ? "Show Fahrenheit" : "Show Celsius"}
+            </button>
+            <div className="mobile-row">
               <LocalInformation
                 country={location.country}
                 timezone={location.timezone}
@@ -150,9 +153,6 @@ const Weather = () => {
                 windSpeed={weather.wind_kph}
               />
             </div>
-            <button className="btn" onClick={toggleTemperatureUnit}>
-              {isCelsius ? "Show Fahrenheit" : "Show Celsius"}
-            </button>
           </div>
           <Clouds />
           <div className="mobile-row section--light">

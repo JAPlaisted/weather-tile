@@ -11,6 +11,7 @@
 
 .row {
   flex-direction: row;
+  margin-inline: 15rem;
 }
 
 .mobile-row {
@@ -26,7 +27,7 @@
 .col {
     display: flex;
     flex-direction: col;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 @media screen and (min-width: 1024px) {
@@ -47,7 +48,10 @@
   border-radius: var(--border-radius);
   border: 2px solid var(--color-primary);
   text-transform: uppercase;
-  margin-left: 10rem;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 10px 15px;
 }
 
 .btn:hover {
@@ -75,6 +79,8 @@ html {
   
 body { 
   font-family: 'Roboto Condensed', sans-serif;
+  background-color: rgb(165, 165, 165);
+  overflow: hidden;
 }
   
 a {
@@ -83,6 +89,21 @@ a {
   
 p {
   font-size: 1.2rem;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.weather-info > div > p {
+  font-size: 1.4rem;
+  margin-inline: 2rem;
+  margin-right: 10rem;
+}
+
+.weather-info > div > h2 {
+  font-size: 6rem;
 }
 
 .section--dark {
@@ -99,6 +120,15 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcb13b",endColorstr="#b9b7b5",GradientType=1);
   color: var(--color-body-light);
   max-height: 40vh;
+}
+
+@media screen and (max-width: 400px) {
+  .section--dark {
+    max-height: 100vh;
+  }
+  .section--light {
+    max-height: 100vh;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -189,7 +219,7 @@ p {
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: var(--color-background-dark);
+	background-color: rgb(165, 165, 165);
 	height: 100vh;
 	width: 100%;
 	display: flex;
@@ -211,7 +241,7 @@ p {
   position: relative;
   top: -10rem;
   font-size: 3rem;
-  color: var(--color-primary);
+  color: #fff;
 }
 
 .loader span {
@@ -219,7 +249,7 @@ p {
 	height: 0.8vw;
 	width: 0.8vw;
 	border-radius: 50%;
-	background-color: var(--color-secondary);
+	background-color: var(--color-primary);
 }
 
 .loader span:nth-child(1) {
