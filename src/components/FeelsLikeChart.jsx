@@ -14,7 +14,7 @@ const FeelsLikeChart = ({ isCelsius, tempC, tempF, feelsLikeC, feelsLikeF }) => 
 const colors = ["#fcb13b", "#bb4003"];
   
     return (
-      <div style={{ height: '300px', width: '450px' }}>
+      <div style={{ height: '300px', width: '400px' }}>
           <ResponsiveBar
             data={[{ 
                 type: "Temp", 

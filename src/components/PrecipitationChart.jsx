@@ -12,7 +12,7 @@ const PrecipitationChart = ({ precipitation, isCelsius }) => {
   const colors = ["#1F6A90"];
   
   return (
-    <div style={{ height: '300px', width: '450px' }}>
+    <div style={{ height: '300px', width: '400px' }}>
       <ResponsiveBar
         data={data}
         keys={["value"]}

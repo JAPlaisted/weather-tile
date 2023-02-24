@@ -4,6 +4,8 @@ import WeatherInformation from "./components/WeatherInformation";
 import FeelsLikeChart from "./components/FeelsLikeChart";
 import PrecipitationChart from "./components/PrecipitationChart";
 import VisibilityAndAirChart from "./components/VisibilityAndAirChart";
+import Clouds from "./components/Clouds";
+import LoadingScreen from "./components/LoadingScreen";
 import "./App.css";
 
 const Weather = () => {
@@ -115,7 +117,7 @@ const Weather = () => {
   };
 
   return (
-    <div>
+    <div className="weather-tile">
       {weather.temp_c && weather.temp_f && (
         <div>
           <div className="section--dark">
@@ -139,7 +141,6 @@ const Weather = () => {
                 cloud={weather.cloud}
                 gust={weather.gust_kph}
                 humidity={weather.humidity}
-                precipitation={weather.precip_mm}
                 pressure={weather.pressure_mb}
                 uV={weather.uv}
                 visibility={weather.vis_km}
@@ -149,10 +150,11 @@ const Weather = () => {
                 windSpeed={weather.wind_kph}
               />
             </div>
-            <button onClick={toggleTemperatureUnit}>
+            <button className="btn" onClick={toggleTemperatureUnit}>
               {isCelsius ? "Show Fahrenheit" : "Show Celsius"}
             </button>
           </div>
+          <Clouds />
           <div className="row section--light">
             <FeelsLikeChart
               isCelsius={isCelsius}
@@ -173,11 +175,14 @@ const Weather = () => {
               usAir={airQuality["us-epa-index"]}
             />
             <div className="divider" />
-            <PrecipitationChart precipitation={3} isCelsius={isCelsius} />
+            <PrecipitationChart
+              precipitation={weather.precip_mm}
+              isCelsius={isCelsius}
+            />
           </div>
         </div>
       )}
-      {!weather.temp_c && !weather.temp_f && <div>Error Loading Data</div>}
+      {!weather.temp_c && !weather.temp_f && <LoadingScreen />}
     </div>
   );
 };

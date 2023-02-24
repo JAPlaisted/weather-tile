@@ -18,7 +18,6 @@ function WeatherInformation({icon, condition, isCelsius, tempC, tempF, feelsLike
             <p>Cloud: {cloud}%</p>
             <p>Gust: {convertedGust.toFixed(1)} {isCelsius ? 'km/h' : 'mph'}</p>
             <p>Humidity: {humidity}%</p>
-            <p>Precipitation: {precipitation} mm</p>
             <p>Pressure: {pressure} mb</p>
             <p>UV: {uV}</p>
             <p>Visibility: {convertedVisibility.toFixed(1)} {isCelsius ? 'km' : 'mi'}</p>

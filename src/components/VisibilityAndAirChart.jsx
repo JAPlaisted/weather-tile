@@ -32,7 +32,7 @@ const AirQualityScatterPlot = ({ co, no2, o3, pm25, pm10, so2, ukAir, usAir }) =
     const colors = ['#fcb13b', '#fca535', '#fb9c2e', '#ea8329', '#d56b23', '#bb4003'];
 
     return (
-        <div style={{ height: '300px', width: '400px' }}>
+        <div style={{ height: '250px', width: '400px' }}>
             <h2>Air Quality</h2>
             <ResponsiveScatterPlot
                 data={data}
