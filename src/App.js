@@ -155,7 +155,7 @@ const Weather = () => {
             </button>
           </div>
           <Clouds />
-          <div className="row section--light">
+          <div className="mobile-row section--light">
             <FeelsLikeChart
               isCelsius={isCelsius}
               tempC={weather.temp_c}

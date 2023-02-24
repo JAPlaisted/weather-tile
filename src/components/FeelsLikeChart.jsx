@@ -15,6 +15,7 @@ const colors = ["#fcb13b", "#bb4003"];
   
     return (
       <div style={{ height: '300px', width: '400px' }}>
+        <h2 style={{ marginLeft: '10px' }}>Feels Like</h2>
           <ResponsiveBar
             data={[{ 
                 type: "Temp", 
@@ -31,7 +32,7 @@ const colors = ["#fcb13b", "#bb4003"];
             ]}
             keys={["value"]}
             indexBy="label"
-            margin={{ top: 60, right: 30, bottom: 50, left: 60 }}
+            margin={{ top: 0, right: 30, bottom: 90, left: 60 }}
             padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
