@@ -159,7 +159,7 @@ p {
 
 .divider {
   border-right: 1px solid var(--color-primary);
-  height: 20rem;
+  height: 10rem;
   margin-top: 5%;
 }
 
