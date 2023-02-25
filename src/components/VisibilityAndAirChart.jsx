@@ -32,11 +32,11 @@ const AirQualityScatterPlot = ({ co, no2, o3, pm25, pm10, so2, ukAir, usAir }) =
     const colors = ['#fcb13b', '#fca535', '#fb9c2e', '#ea8329', '#d56b23', '#bb4003'];
 
     return (
-        <div style={{ height: '250px', width: '350px' }}>
+        <div style={{  height: '200px', width: '300px'  }}>
             <h2 style={{ marginLeft: '10px' }}>Air Quality</h2>
             <ResponsiveScatterPlot
                 data={data}
-                margin={{ top: 20, right: 20, bottom: 70, left: 70 }}
+                margin={{ top: 40, right: 20, bottom: 70, left: 70 }}
                 xScale={{ type: 'point' }}
                 yScale={{ type: 'linear', min: 0, max: 'auto' }}
                 blendMode="multiply"
@@ -51,18 +51,6 @@ const AirQualityScatterPlot = ({ co, no2, o3, pm25, pm10, so2, ukAir, usAir }) =
                     tickPadding: 5,
                     tickRotation: 0,
                 }}
-                legends={[                    
-                    {                        
-                        anchor: 'bottom',                        
-                        direction: 'row',                        
-                        translateY: 60,                        
-                        itemWidth: 53,                        
-                        itemHeight: 12,                        
-                        itemTextColor: '#999',                        
-                        symbolSize: 12,                        
-                        symbolShape: 'circle',                    
-                    },                
-                ]}
                 tooltip={({ node }) => (
                     <div
                         style={{

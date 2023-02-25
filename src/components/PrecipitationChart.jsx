@@ -12,13 +12,13 @@ const PrecipitationChart = ({ precipitation, isCelsius }) => {
   const colors = ["#1F6A90"];
   
   return (
-    <div style={{ height: '300px', width: '400px' }}>
+    <div style={{ height: '200px', width: '300px'  }}>
       <h2 style={{ marginLeft: '10px' }}>Precipitation</h2>
       <ResponsiveBar
         data={data}
         keys={["value"]}
         indexBy="type"
-        margin={{ top: 0, right: 30, bottom: 90, left: 60 }}
+        margin={{ top: 40, right: 30, bottom: 90, left: 60 }}
         padding={0.3}
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}

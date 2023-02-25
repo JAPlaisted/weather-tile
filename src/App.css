@@ -109,7 +109,7 @@ p {
 .section--dark {
   background-color: var(--color-background-dark);
   color: var(--color-body-dark);
-  max-height: 5vh;
+  max-height: 15vh;
 }
 
 .section--light {
@@ -119,7 +119,7 @@ p {
   background: linear-gradient(190deg, rgba(252,177,59,1) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 75%, rgba(185,183,181,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcb13b",endColorstr="#b9b7b5",GradientType=1);
   color: var(--color-body-light);
-  max-height: 40vh;
+  max-height: 30vh;
 }
 
 @media screen and (max-width: 400px) {
