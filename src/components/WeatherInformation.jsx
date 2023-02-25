@@ -1,16 +1,11 @@
 import React from 'react';
 
-function WeatherInformation({icon, condition, isCelsius, tempC, tempF, feelsLikeC, feelsLikeF, cloud, gust, humidity, precipitation, pressure, uV, visibility, lastUpdated, windDegree, windDirection, windSpeed}) {
+function WeatherInformation({condition, isCelsius, feelsLikeC, feelsLikeF, cloud, gust, humidity, precipitation, pressure, uV, visibility, lastUpdated, windDegree, windDirection, windSpeed}) {
     const convertedGust = isCelsius ? gust : gust * 0.621371;
     const convertedVisibility = isCelsius ? visibility : visibility * 0.621371;
     const convertedWindSpeed = isCelsius ? windSpeed : windSpeed * 0.621371;
     return (
-        <div>
             <div className='weather-info'>
-              <div>
-                <img src={icon} alt={condition} style={{ height: '100px', width: '100px' }}/>
-                <h2>{isCelsius ? tempC : tempF}&deg;</h2>
-              </div>
               <div>
                 <p>
                   Feels like:{" "}
@@ -32,7 +27,7 @@ function WeatherInformation({icon, condition, isCelsius, tempC, tempF, feelsLike
                 <p>Last updated: {lastUpdated}</p>
                 </div>
             </div>
-          </div>
+      
     );
 }
 

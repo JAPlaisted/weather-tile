@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import WeatherMain from "./components/WeatherMain";
 import LocalInformation from "./components/LocationInformation";
 import WeatherInformation from "./components/WeatherInformation";
 import FeelsLikeChart from "./components/FeelsLikeChart";
@@ -132,6 +133,13 @@ const Weather = () => {
                 localtime={location.localtime}
                 latitude={location.lat}
                 longitude={location.long}
+              />
+              <WeatherMain
+                icon={weather.condition.icon}
+                condition={weather.condition.text}
+                isCelsius={isCelsius}
+                tempC={weather.temp_c}
+                tempF={weather.temp_f}
               />
               <WeatherInformation
                 icon={weather.condition.icon}
