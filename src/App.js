@@ -184,7 +184,7 @@ const Weather = () => {
             />
             <div className="divider" />
             <PrecipitationChart
-              precipitation={weather.precip_mm + 1}
+              precipitation={weather.precip_mm}
               isCelsius={isCelsius}
             />
           </div>
