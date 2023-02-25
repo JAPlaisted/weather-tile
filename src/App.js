@@ -188,6 +188,8 @@ const Weather = () => {
               isCelsius={isCelsius}
             />
           </div>
+          <p>Created By Jonathan Plaisted</p>
+          <p>Powered By WeatherAPI</p>
         </div>
       )}
       {!weather.temp_c && !weather.temp_f && <LoadingScreen />}
