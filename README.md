@@ -12,6 +12,12 @@ Start the development server using npm start.
 
 ## Usage
 
+Visit the live site here:
+
+https://famous-brioche-becb52.netlify.app/
+
+OR
+
 To use Weather Tile, follow these steps:
 
 Open your web browser and navigate to http://localhost:3000.
